@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Online_Booking_Tourism.Models.Traveler>
+
+@{ ViewData["Title"] = "Travelers"; }
+
+<h1>Travelers</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TravellerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Place)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TelephoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TravellingDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Id)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.TravellerName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Place)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.TelephoneNumber)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.TravellingDate)
+    </td>
+
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+    </td>
+</tr>}
+    </tbody>
+</table>
+
+<h2>Claim details</h2>
+<ul>
+    @foreach (var claim in User.Claims)
+    {
+<li><strong>@claim.Type</strong>: @claim.Value</li>}
+</ul>
